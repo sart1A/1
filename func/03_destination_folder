@@ -1,0 +1,6 @@
+#!/bin/sh
+
+locate_destination_folder() {
+	[ -d $destination ] || mkdir -p "$destination" &> /dev/null || \
+		display_cannot_create_saving_dir
+}

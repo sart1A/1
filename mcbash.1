@@ -1,0 +1,116 @@
+.TH McBash 1 mcbash
+.SH NAME
+mcbash \- bash script to scan for valid MAC addresses on Stalker Portal servers.
+.SH SYNOPSIS
+.B mcbash
+[
+.I DNS_URL
+]
+.SH DESCRIPTION
+.B mcbash
+scans and stores valid MAC addresses on specified server.
+.SH COMMANDS
+.TP
+.B -w
+[
+.I requests_per_seconds
+]
+delay between two requests in seconds (avoid flood). Default delay = 2
+.TP
+.B -b
+[
+.I number_of_requests
+]
+number of requests before pausing.
+.TP
+.B -d
+[
+.I duration_in_seconds
+]
+duration time for each pause. Default duration = 10
+.TP
+.B -s
+[
+.I number_of_requests
+]
+stop
+.B mcbash
+after X requests.
+.TP
+.B -k
+store expired MAC addresses (valid but expired accounts)
+.TP
+.B -t
+[
+.I seconds
+]
+consider requests timeouted after this delay.
+.TP
+.B -u
+[
+.I URL/IP
+]
+indicate the server URL/IP.
+.TP
+.B --seq
+check MAC addresses sequentially.
+.TP
+.B --mac-file
+[
+.I FILE
+]
+check MAC addresses stored inside a file. MAC addresses should be line by line in that file.
+.TP
+.B --range
+set a range (lower and upper bound) between which MAC addresses are checked. This option is force when using
+.B --seq
+option, and fully functional with random checking.
+.TP
+.B -F
+[
+.I xx:xx:xx:xx:xx
+]
+indicate first MAC address to check.
+.TP
+.B -L
+[
+.I xx:xx:xx:xx:xx
+]
+indicate last MAC address to check.
+.TP
+.B --prefix
+set first characters of MAC to be checked.
+.TP
+.B -np
+don't ask for parameters. Set your default parameters in $HOME/.mcbash/mcbash.conf
+.TP
+.B --proxy
+[
+.I http://proxy
+]
+tells mcbash to communicate through http://proxy. See --proxy-user for credentials.
+.TP
+.B --proxy-user
+[
+.I username:password
+]
+set username and password when using --proxy.
+.TP
+.B --proxy-file
+[
+.I FILE
+]
+tells mcbash to read from a proxy list in a file. When a request is timeout, the next proxy is selected.
+.TP
+.B -EA
+for "enhanced authentication" will add serial number and Device_ID1 to GET requests, and save those informations if MAC found.
+.TP
+.B --no-checkpoint
+ignore loading and saving checkpoints.
+.TP
+.B --show-only-mac
+only outputs found MAC addresses to stdout. Useful if you want to redirect mcbash output to another program.
+.SH AUTHORS
+Written by dougy147 originally in 2022.
+.SH LICENSE
+GPLv3
